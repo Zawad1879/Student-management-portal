@@ -11,5 +11,8 @@
         <servlet-name>basicInfo</servlet-name>
         <url-pattern>/basicInfo.do</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>Homepage.html</welcome-file>
 
+    </welcome-file-list>
 </web-app>
