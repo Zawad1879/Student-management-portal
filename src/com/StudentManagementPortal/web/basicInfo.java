@@ -23,10 +23,22 @@ public class basicInfo extends HttpServlet {
         String table_name_singular = request.getParameter("type");
         response.setContentType("text/Html");
         PrintWriter out = response.getWriter();
-        out.println("Advice<br>");
+//        out.println("Advice<br>");
         ArrayList <String> temp = new ArrayList<>();
         temp.add(request.getParameter(table_name_singular+"_name"));
         temp.add(request.getParameter(table_name_singular+"_id"));
+
+        if(table_name_singular.equals("student")){
+            temp.add(request.getParameter("student_assigned_teacher_id"));
+        }
+        else if(table_name_singular.equals("teacher")){
+            temp.add(request.getParameter("teacher_assigned_subject_id"));
+        }
+        else{
+            temp.add(request.getParameter("subject_assigned_student_id"));
+        }
+
+
         insertIntoDatabase insertion = new insertIntoDatabase(table_name_singular+"s",temp);
         retrieveAllRecordsFromDatabase retrieval = new retrieveAllRecordsFromDatabase();
         ResultSet students_resultSet = null;
